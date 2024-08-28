@@ -1,0 +1,29 @@
+.row.proximos-viajes 
+    each viaje in viajes 
+        .col-md-6.col-lg-4.mb-4
+            .card 
+                img.card-img-top(src=`img/destinos_${viaje.imagen}.jpg`)
+                .card-body
+                    h2 = viaje.titulo // podes acceder a cada columna
+                    p 
+                        svg.icon.icon-tabler.icon-tabler-calendar(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#00bfd8' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                            rect(x='4' y='5' width='16' height='16' rx='2')
+                            line(x1='16' y1='3' x2='16' y2='7')
+                            line(x1='8' y1='3' x2='8' y2='7')
+                            line(x1='4' y1='11' x2='20' y2='11')
+                            line(x1='11' y1='15' x2='12' y2='15')
+                            line(x1='12' y1='15' x2='12' y2='18')
+                        | #{viaje.fecha_ida} - #{viaje.fecha_vuelta}
+                    p 
+                        svg.icon.icon-tabler.icon-tabler-user-circle(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#00bfd8' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                            circle(cx='12' cy='12' r='9')
+                            circle(cx='12' cy='10' r='3')
+                            path(d='M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855')
+                        | #{viaje.disponibles} Disponibles
+
+                    p= viaje.descripcion.substr(0,100) + '...'
+                    a(href=`viajes/${viaje.slug}`, class="btn btn-success btn-block") Mas informacion 
+
+        
